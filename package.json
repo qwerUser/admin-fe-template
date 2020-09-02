@@ -12,6 +12,7 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^4.2.2",
     "file-loader": "^6.0.0",
@@ -26,6 +27,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "element-ui": "^2.13.2",
+    "qs": "^6.9.4",
     "vue": "^2.6.12",
     "vue-router": "^3.4.3",
     "vuex": "^3.5.1"

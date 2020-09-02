@@ -34,8 +34,8 @@ module.exports = (env) => {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['env'],
-						plugins:[require('./src/js/utils/filename-plugin.js')]
+						presets: ['env',],
+						plugins:[require('./src/js/utils/filename-plugin.js'),'transform-object-rest-spread']
 					}
 				}
 			}]

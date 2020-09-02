@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import {ajax} from '../modules/request';
 export default {
   data() {
     return {
@@ -45,7 +46,9 @@ export default {
   },
   methods: {
     isLoginIn() {},
-    login() {},
+    login() {
+      
+    },
     showPassword() {
       this.passwordType = this.passwordType === "text" ? "password" : "text";
     }
