@@ -4,5 +4,5 @@ module.exports = {
 	// axios baseUrl
 	'REQUEST_URL':'http://localhost:3001',
 	// 是否使用webpack-dev-server
-	'USE_DEVSERVER':false
+	'USE_DEVSERVER':true
 }

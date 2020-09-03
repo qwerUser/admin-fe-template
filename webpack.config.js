@@ -47,7 +47,7 @@ module.exports = (env) => {
 			var plugins = [
 				new HtmlWebpackPlugin({
 					template: './src/html/admin-fe.html',
-					filename: '../admin-fe.html',
+					filename: (config['ENV']==='development' && config['USE_DEVSERVER']) ? 'admin-fe.html' : '../admin-fe.html',
 					inject: false,
 					hash:true
 				}),
@@ -56,16 +56,21 @@ module.exports = (env) => {
 			return plugins;
 		})(),
 		devServer: {
+			contentBase:false,
+			historyApiFallback: true,
 			// contentBase:path.join(__dirname,'dist'),
 			// hot: true,
 			compress: true,
 			// liveReload:true, // 检测到文件更改时，开发服务器将重新加载/刷新页面
-			// host: 'localhost',
+			host: 'localhost',
 			port: '8001',
-			// publicPath: 'static/',
-			writeToDisk: true,
+			// publicPath: '/',
+			// writeToDisk: true,
 			open: true,
-			index:'admin-fe.html'
+			index:'admin-fe.html',
+			watchOptions: {
+				poll: true,
+			}
 		},
 	}
 	

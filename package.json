@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "webpack --progress --inline --env.path=../wechatServer/contents --watch",
-    "dev": "webpack-dev-server --progress --config webpack.config.js",
+    "test": "webpack --progress --env.path=../wechatServer/contents --watch",
+    "dev": "webpack-dev-server",
     "dev1": "webpack --progress"
   },
   "author": "qw",
