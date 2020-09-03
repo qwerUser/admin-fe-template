@@ -13,13 +13,13 @@ axios.interceptors.request.use(
 		return Promise.error(err);
 	}
 )
-// 相应拦截
+// 响应拦截
 axios.interceptors.response.use(
 	response => {
-
+		return response;
 	},
 	error => {
-
+		return error;
 	}
 )
 /**
@@ -39,11 +39,12 @@ export function ajax(data){
 	requestObject.ts = Date.now();
 	let requestfun = {
 		'get':() => {
-			return axios.get(data.url,qs.stringify(requestObject))
+			return axios.get(data.url,{
+				params:requestObject
+			})
 		},
 		'post':() => {
 			let requestData;
-			
 			switch(contentType){
 				case 'json':
 				requestData = requestObject;
@@ -58,12 +59,12 @@ export function ajax(data){
 				}
 				break;
 			}
-			return axios.post(data.url,requestData);
+			return axios.post(data.url,requestData)
 		}
 	}
 	return new Promise((resolve,reject) => {
 		requestfun[type]().then(res=>{
-			resolve(res)
+			resolve(res.data)
 		}).catch(e=>{
 			reject(e)
 		})

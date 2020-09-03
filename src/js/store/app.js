@@ -1,11 +1,11 @@
 export default {
 	namespaced: true,
 	state: {
-		userName:'111'
+		isSignIn:false
 	},
 	mutations: {
-		setUserName(state,name){
-			state.userName = name;
+		setSignType(state,type){
+			state.isSignIn = type;
 		}
 	},
 	getters: {

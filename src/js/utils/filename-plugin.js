@@ -27,6 +27,7 @@ module.exports = (api) => {
 	return {
 		visitor:{
 			Identifier(path){
+				console.log('1111---->')
 				const node = path.node;
 				// 获取兄弟节点
 				const siblingPath = path.parentPath.node.init;

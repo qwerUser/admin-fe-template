@@ -4,19 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 module.exports = (env) => {
 	let outPath;
-
 	if (env && env.path) {
 		outPath = path.resolve(env.path, 'static');
 	} else {
 		outPath = path.resolve(__dirname, 'dist/static');
 	}
 	return {
-		entry: './src/js/app.js',
+		entry: ['babel-polyfill','./src/js/app.js'],
 		output: {
 			path: outPath,
 			filename: 'app_bundle.js',
 			chunkFilename: 'chunk_[chunkhash].js',
-			publicPath: 'static/'
+			publicPath: (config['ENV']==='development' && config['USE_DEVSERVER']) ? '/' : 'static/'
 		},
 		module:{
 			rules: [{
@@ -25,6 +24,9 @@ module.exports = (env) => {
 			},{
 				test: /\.css$/,
 				use: ['style-loader', 'css-loader']
+			},{
+				test: /\.less$/,
+				use: ['style-loader', 'css-loader', 'less-loader']
 			}, {
 				test: /\.(gif|jpeg|jpg|png|woff|svg|eot|ttf)\??.*$/,
 				loader: 'url-loader?limit=1024'
@@ -52,7 +54,19 @@ module.exports = (env) => {
 				new VueLoaderPlugin()
 			];
 			return plugins;
-		})()
+		})(),
+		devServer: {
+			// contentBase:path.join(__dirname,'dist'),
+			// hot: true,
+			compress: true,
+			// liveReload:true, // 检测到文件更改时，开发服务器将重新加载/刷新页面
+			// host: 'localhost',
+			port: '8001',
+			// publicPath: 'static/',
+			writeToDisk: true,
+			open: true,
+			index:'admin-fe.html'
+		},
 	}
 	
 }

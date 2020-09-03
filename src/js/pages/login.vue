@@ -24,6 +24,7 @@
       </div>
       <el-button class="login-button" @click="login" type="primary">登录</el-button>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
