@@ -19,7 +19,7 @@ const firstMenu = {
 const secondMenu = {
 	'main1':{
 		parent:'main',
-		name:'权限设置',
+		name:'main权限设置',
 		key:'main1'
 	},
 	'userSetting':{
@@ -36,6 +36,11 @@ const secondMenu = {
 		parent:'main',
 		name:'主页菜单',
 		key:'mainMenu'
+	},
+	'userPermission':{
+		parent:'setting',
+		name:'权限设置',
+		key:'userPermission'
 	}
 }
 
