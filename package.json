@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "webpack --progress --env.path=../wechatServer/contents --watch",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --watch",
     "dev1": "webpack --progress"
   },
   "author": "qw",
@@ -16,6 +16,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.2.2",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",

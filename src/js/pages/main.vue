@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    test
+    管理台
   </div>
 </template>
 
@@ -30,8 +30,8 @@ export default {
 // // 页面字体颜色
 // @fontColor: #333;
 .test{
-	background-color: @backgroundColor;
-	color:@normalFontColor;
+	// background-color: @backgroundColor;
+	// color:@normalFontColor;
 }
 </style>
 

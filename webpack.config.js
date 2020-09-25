@@ -2,6 +2,7 @@ const path = require('path');
 const config = require('./config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = (env) => {
 	let outPath;
 	if (env && env.path) {
@@ -37,7 +38,8 @@ module.exports = (env) => {
 					loader: 'babel-loader',
 					options: {
 						presets: ['env',],
-						plugins:[require('./src/js/utils/filename-plugin.js'),'transform-object-rest-spread']
+						// plugins:[require('./src/js/utils/filename-plugin.js'),'transform-object-rest-spread']
+						plugins:['transform-object-rest-spread']
 					}
 				}
 			}]
@@ -45,6 +47,8 @@ module.exports = (env) => {
 		mode:config['ENV'],
 		plugins: (function () {
 			var plugins = [
+				// 清除文件
+				new CleanWebpackPlugin(),
 				new HtmlWebpackPlugin({
 					template: './src/html/admin-fe.html',
 					filename: (config['ENV']==='development' && config['USE_DEVSERVER']) ? 'admin-fe.html' : '../admin-fe.html',
@@ -59,7 +63,7 @@ module.exports = (env) => {
 			contentBase:false,
 			historyApiFallback: true,
 			// contentBase:path.join(__dirname,'dist'),
-			// hot: true,
+			hot: true,
 			compress: true,
 			// liveReload:true, // 检测到文件更改时，开发服务器将重新加载/刷新页面
 			host: 'localhost',

@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { createMenu } from '../modules/menu';
 import {ajax} from '../modules/request';
 export default {
   data() {
@@ -48,7 +49,9 @@ export default {
   methods: {
     isLoginIn() {},
     login() {
-      
+      let menu = createMenu(['home','userPermission','userSettingName','userSettingList','main1-1','main1-2','main1-3','main1-4','main1-5','main1-6'])
+      this.$store.commit('app/setMenu',menu);
+      this.$router.push('/main')
     },
     showPassword() {
       this.passwordType = this.passwordType === "text" ? "password" : "text";
