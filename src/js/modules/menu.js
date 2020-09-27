@@ -112,6 +112,7 @@ const permission = {
  * @return {Array} 当前用户的菜单列表
  */
 export function createMenu(permissionList){
+	// 当前用户的二级菜单对象
 	let secondeMenuData = {};
 	let menu = permissionList.reduce((preData,cur,index) => {
 		let currentData = permission[cur];
@@ -126,6 +127,7 @@ export function createMenu(permissionList){
 				preData[parentName].child = preData[parentName].child || [];
 				preData[parentName].child.push(currentData);
 			}else{
+				// 生成当前用户的二级菜单对象
 				let secodeData = secondMenu[parentName];
 				if(secondeMenuData[parentName]){
 					secodeData = secondeMenuData[parentName];

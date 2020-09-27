@@ -17,7 +17,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const store = require('../store').default;
-  if(!store.state.app.isSignIn && to.path!=='/'){
+  if(!store.state.app.isSignIn && to.path!=='/' && from.path!=='/'){
     router.replace('/');
     next();
     return;
